@@ -13,5 +13,8 @@ Her feet knew the way.
 She had only ever lent them to the bus.
 `;
 
-mkdirSync("/output", { recursive: true });
-writeFileSync("/output/entry.txt", POEM, "utf8");
+// Respect the grader's output directory when provided, else /output.
+const OUTPUT_DIR = process.env.MAKEFUN_OUTPUT_DIR ?? "/output";
+
+mkdirSync(OUTPUT_DIR, { recursive: true });
+writeFileSync(`${OUTPUT_DIR}/entry.txt`, POEM, "utf8");
